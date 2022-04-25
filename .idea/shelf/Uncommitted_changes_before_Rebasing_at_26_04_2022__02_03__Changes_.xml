@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Rebasing_at_26_04_2022,_02_03_[Changes]" date="1650920615422" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_26_04_2022,_02_03_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Rebasing at 26.04.2022, 02:03 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/jm/task/core/jdbc/service/UserServiceImpl.class" />
+    <option name="AFTER_PATH" value="target/classes/jm/task/core/jdbc/service/UserServiceImpl.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Rebasing_at_26_04_2022,_02_03_[Changes]/UserServiceImpl.class" />
+  </binary>
+</changelist>

@@ -1,0 +1,48 @@
+Index: src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package jm.task.core.jdbc.dao;\n\nimport jm.task.core.jdbc.model.User;\n\nimport java.util.List;\n\npublic class UserDaoHibernateImpl implements UserDao {\n    public UserDaoHibernateImpl() {\n\n    }\n\n\n    @Override\n    public void createUsersTable() {\n\n    }\n\n    @Override\n    public void dropUsersTable() {\n\n    }\n\n    @Override\n    public void saveUser(String name, String lastName, byte age) {\n\n    }\n\n    @Override\n    public void removeUserById(long id) {\n\n    }\n\n    @Override\n    public List<User> getAllUsers() {\n        return null;\n    }\n\n    @Override\n    public void cleanUsersTable() {\n\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java b/src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java
+--- a/src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java	(revision 6c51e7e2dde8c255dd84a2782e6dbb3937ded49d)
++++ b/src/main/java/jm/task/core/jdbc/dao/UserDaoHibernateImpl.java	(date 1650920490650)
+@@ -5,8 +5,8 @@
+ import java.util.List;
+ 
+ public class UserDaoHibernateImpl implements UserDao {
+-    public UserDaoHibernateImpl() {
+-
++    public UserDaoHibernateImpl()  {
++рвртпр
+     }
+ 
+ 
+Index: src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package jm.task.core.jdbc.service;\n\nimport jm.task.core.jdbc.dao.UserDao;\nimport jm.task.core.jdbc.dao.UserDaoJDBCImpl;\nimport jm.task.core.jdbc.model.User;\nimport jm.task.core.jdbc.util.Util;\n\nimport java.lang.reflect.InvocationTargetException;\nimport java.sql.*;\nimport java.util.List;\n\n\npublic class UserServiceImpl extends Util implements UserService, UserDao {\n\n    UserDao userDaoJDBC = new UserDaoJDBCImpl();\n\n    public UserServiceImpl() throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {\n    }\n\n    public void createUsersTable() throws SQLException {\n        userDaoJDBC.createUsersTable();\n    }\n\n    public void dropUsersTable() throws SQLException {\n        userDaoJDBC.dropUsersTable();\n    }\n\n    public void saveUser(String name, String lastName, byte age) throws SQLException {\n        userDaoJDBC.saveUser(name, lastName, age);\n    }\n\n    public void removeUserById(long id) {\n        userDaoJDBC.removeUserById(id);\n    }\n\n    @Override\n    public List<User> getAllUsers() throws SQLException {\n        return userDaoJDBC.getAllUsers();\n    }\n\n    public void cleanUsersTable() {\n        userDaoJDBC.cleanUsersTable();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java b/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java
+--- a/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java	(revision 6c51e7e2dde8c255dd84a2782e6dbb3937ded49d)
++++ b/src/main/java/jm/task/core/jdbc/service/UserServiceImpl.java	(date 1650920302979)
+@@ -1,6 +1,7 @@
+ package jm.task.core.jdbc.service;
+ 
+ import jm.task.core.jdbc.dao.UserDao;
++import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
+ import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
+ import jm.task.core.jdbc.model.User;
+ import jm.task.core.jdbc.util.Util;
+@@ -12,7 +13,7 @@
+ 
+ public class UserServiceImpl extends Util implements UserService, UserDao {
+ 
+-    UserDao userDaoJDBC = new UserDaoJDBCImpl();
++    UserDao userDaoJDBC = new UserDaoHibernateImpl();
+ 
+     public UserServiceImpl() throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+     }
