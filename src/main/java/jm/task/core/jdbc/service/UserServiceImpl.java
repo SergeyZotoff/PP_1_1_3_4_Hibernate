@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UserServiceImpl extends Util implements UserService, UserDao {
 
-    UserDao userDaoJDBC = new UserDaoJDBCImpl();
+     userDaoJDBC = new UserDaoJDBCImpl();
 
     public UserServiceImpl() throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
     }
