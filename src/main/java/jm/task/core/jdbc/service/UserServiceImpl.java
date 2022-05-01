@@ -11,11 +11,11 @@ import java.sql.*;
 import java.util.List;
 
 
-public class UserServiceImpl extends Util implements UserService, UserDao {
+public class UserServiceImpl implements UserService, UserDao {
 
-    UserDao userDaoJDBC = new UserDaoHibernateImpl();
+    private UserDaoHibernateImpl userDaoJDBC = new UserDaoHibernateImpl();
 
-    public UserServiceImpl() throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void UserServiceImpl() throws SQLException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
     }
 
     public void createUsersTable() throws SQLException {
