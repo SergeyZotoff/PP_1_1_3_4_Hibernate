@@ -1,9 +1,10 @@
 package jm.task.core.jdbc.dao;
 
-import jdk.swing.interop.SwingInterOpUtils;
+//import jdk.swing.interop.SwingInterOpUtils;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
+import javax.transaction.Transactional;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
@@ -100,3 +101,4 @@ private final Connection connection = Util.getInstance().getConnection();
         }
     }
 }
+

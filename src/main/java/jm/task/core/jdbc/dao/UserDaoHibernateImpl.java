@@ -5,14 +5,18 @@ import jm.task.core.jdbc.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-;
+;import javax.transaction.Transactional;
+
 public class UserDaoHibernateImpl implements UserDao {
 
     private static Session session;
-    List<User> userList = new ArrayList<>();
+    private Transaction transaction = null;
 
     public UserDaoHibernateImpl() {
     }
@@ -40,15 +44,15 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-       session = Util.getSessionFactory().openSession();
-        session.beginTransaction();
-        User user = new User();
-        user.setName(name);
-        user.setLastName(lastName);
-        user.setAge(age);
-        session.save(user);
-        System.out.println("User с именем – " + name + " добавлен в базу данных");
-        session.close();
+        try (Session session = Util.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(new User(name, lastName, age));
+            transaction.commit();
+            System.out.printf("User с именем – %s добавлен в базу данных\n", name);
+        } catch (HibernateException e) {
+            if (transaction != null) transaction.rollback();
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -58,9 +62,10 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
+
          session = Util.getSessionFactory().openSession();
         Query query = session.createQuery("from User");
-         userList = query.getResultList();
+        List userList = query.getResultList();
          userList.forEach(System.out::println);
         session.close();
         return userList;
